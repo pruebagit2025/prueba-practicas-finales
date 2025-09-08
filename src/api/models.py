@@ -69,8 +69,8 @@ class Ticket(db.Model):
             "estado": self.estado,
             "calificacion": self.calificacion,
             "comentario": self.comentario,
-            "fecha_creacion": self.fecha_creacion,
-            "fecha_evaluacion": self.fecha_evaluacion
+            "fecha_creacion": self.fecha_creacion.isoformat() if self.fecha_creacion else None,
+            "fecha_evaluacion": self.fecha_evaluacion.isoformat() if self.fecha_evaluacion else None
         }
 
 class Comentario(db.Model):
@@ -86,5 +86,5 @@ class Comentario(db.Model):
             "id": self.id,
             "id_cliente": self.id_cliente,
             "texto": self.texto,
-            "fecha": self.fecha
+            "fecha": self.fecha.isoformat() if self.fecha else None
         }
