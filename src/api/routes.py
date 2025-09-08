@@ -161,3 +161,8 @@ def reabrir_ticket(id, ticket_id):
     except Exception as e:
         db.session.rollback()
         return jsonify({"message": f"Error al reabrir ticket: {str(e)}"}), 500
+git pus
+@api.route('/tickets', methods=['GET'])
+def listar_todos_tickets():
+    tickets = Ticket.query.all()
+    return jsonify([t.serialize() for t in tickets]), 200
